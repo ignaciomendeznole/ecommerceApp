@@ -19,3 +19,17 @@ export type HomeStackParamList = {
   HomeScreen: undefined;
   ProductDetails: undefined;
 };
+
+export type Category = {
+  id: string;
+  categoryName: string;
+  product: Product[];
+};
+
+export type Product = {
+  id: string;
+  imageUri: string;
+  price: number;
+  productName: string;
+  productDescription?: string;
+};

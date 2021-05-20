@@ -13,9 +13,7 @@ const HomeStackHeader = () => {
   return (
     <SafeAreaView
       style={{
-        backgroundColor: "#252525",
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        backgroundColor: "#1b1b1b",
       }}
     >
       <View

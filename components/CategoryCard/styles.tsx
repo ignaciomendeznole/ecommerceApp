@@ -2,10 +2,12 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    height: 150,
-    width: 150,
-    marginHorizontal: 10,
+    height: 370,
+    width: 250,
+    paddingLeft: 10,
     borderRadius: 15,
+    alignItems: "center",
+    marginHorizontal: 5,
   },
   categoryName: {
     color: "white",
@@ -13,9 +15,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   text: {
-    color: "#202020",
+    color: "#d1d1d1",
     fontWeight: "bold",
-    fontSize: 30,
+  },
+  image: {
+    height: 280,
+    width: "100%",
+    borderRadius: 15,
   },
 });
 
