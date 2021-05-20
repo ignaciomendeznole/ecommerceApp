@@ -8,11 +8,11 @@ type CategoryCardProps = {
   categoryName: string;
 };
 
-const CategoryCard = (props: CategoryCardProps) => {
+const MainCategoryCard = (props: CategoryCardProps) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/CategoryCardsImages/woman.jpeg")}
+        source={require("../../../assets/CategoryCardsImages/pexels-photo-845434.jpeg")}
         style={{
           width: 150,
           height: 100,
@@ -20,7 +20,7 @@ const CategoryCard = (props: CategoryCardProps) => {
           alignItems: "center",
         }}
         imageStyle={{ borderRadius: 15 }}
-        blurRadius={5}
+        blurRadius={3}
       >
         <Text style={styles.text}>{props.categoryName}</Text>
       </ImageBackground>
@@ -28,4 +28,4 @@ const CategoryCard = (props: CategoryCardProps) => {
   );
 };
 
-export default CategoryCard;
+export default MainCategoryCard;

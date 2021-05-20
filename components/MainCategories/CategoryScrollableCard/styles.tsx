@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20,
+    marginTop: 10,
+    height: 170,
   },
   title: {
     color: "white",

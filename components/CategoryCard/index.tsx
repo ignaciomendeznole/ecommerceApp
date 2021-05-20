@@ -1,30 +1,31 @@
 import React from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Product } from "../../types";
 import styles from "./styles";
 
 type CategoryCardProps = {
-  id: string;
-  imageUri: string;
-  categoryName: string;
+  product: Product;
 };
 
 const CategoryCard = (props: CategoryCardProps) => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../../assets/CategoryCardsImages/woman.jpeg")}
-        style={{
-          width: 150,
-          height: 100,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        imageStyle={{ borderRadius: 15 }}
-        blurRadius={5}
-      >
-        <Text style={styles.text}>{props.categoryName}</Text>
-      </ImageBackground>
-    </View>
+    <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
+      <View style={styles.container}>
+        <Image
+          source={{
+            uri: "https://cdn.shopify.com/s/files/1/1952/1993/products/product-image-1689527558_5000x.jpg?v=1614240481",
+          }}
+          style={styles.image}
+        />
+        <Text style={{ ...styles.text, fontSize: 20 }}>
+          {props.product.productName}
+        </Text>
+        <Text style={{ ...styles.text, fontSize: 17 }}>
+          ${props.product.price}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
