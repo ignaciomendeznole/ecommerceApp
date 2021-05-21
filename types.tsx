@@ -32,4 +32,5 @@ export type Product = {
   price: number;
   productName: string;
   productDescription?: string;
+  images: string[];
 };

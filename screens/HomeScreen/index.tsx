@@ -1,10 +1,18 @@
-import React from "react";
-import { FlatList, ImageBackground, Text, View } from "react-native";
+import API, { graphqlOperation } from "@aws-amplify/api";
+import React, { useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  ImageBackground,
+  Text,
+  View,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CategoryComponent from "../../components/CategoriesList";
-import Category from "../../components/CategoriesList";
 import CategoryScrollableCard from "../../components/MainCategories/CategoryScrollableCard";
+import { listCategorys } from "../../src/graphql/queries";
+import { Category } from "../../types";
 
 import styles from "./styles";
 
@@ -84,17 +92,34 @@ const dummyCategories = [
 ];
 
 const HomeScreen = () => {
+  const [categories, setCategories] = useState<Category[] | null>([]);
+  const fetchCategories = async () => {
+    try {
+      const response = await API.graphql(graphqlOperation(listCategorys));
+      setCategories(response.data.listCategorys.items);
+      console.log(categories);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchCategories();
+  });
+
+  if (!categories) {
+    return <ActivityIndicator />;
+  }
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <CategoryScrollableCard />
       <FlatList
-        data={dummyCategories}
+        data={categories}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <CategoryComponent
             id={item.id}
-            categoryName={item.title}
-            product={item.product}
+            categoryName={item.categoryName}
+            product={item.product.items}
           />
         )}
       />

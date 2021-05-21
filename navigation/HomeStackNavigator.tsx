@@ -5,6 +5,7 @@ import { View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HomeScreen from "../screens/HomeScreen";
+import ProductDetails from "../screens/ProductDetails";
 import { HomeStackParamList } from "../types";
 
 const Stack = createStackNavigator<HomeStackParamList>();
@@ -52,6 +53,7 @@ export const HomeStackNavigator = () => {
       screenOptions={{ header: () => <HomeStackHeader /> }}
     >
       <Stack.Screen name='HomeScreen' component={HomeScreen} />
+      <Stack.Screen name='ProductDetails' component={ProductDetails} />
     </Stack.Navigator>
   );
 };

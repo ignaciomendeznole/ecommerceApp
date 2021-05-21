@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -9,8 +10,17 @@ type CategoryCardProps = {
 };
 
 const CategoryCard = (props: CategoryCardProps) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => {
+        navigation.navigate("ProductDetails", {
+          id: props.product.id,
+        });
+      }}
+    >
       <View style={styles.container}>
         <Image
           source={{
