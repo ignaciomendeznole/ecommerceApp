@@ -133,6 +133,22 @@ export const getCartProduct = /* GraphQL */ `
     }
   }
 `;
+
+export const getAllCategories = /* GraphQL */ `
+  query getAllCategories {
+    listCategorys {
+      items {
+        categoryName
+        id
+        product {
+          items {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
 export const listCartProducts = /* GraphQL */ `
   query ListCartProducts(
     $filter: ModelCartProductFilterInput

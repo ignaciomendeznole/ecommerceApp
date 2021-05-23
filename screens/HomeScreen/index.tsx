@@ -11,7 +11,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CategoryComponent from "../../components/CategoriesList";
 import CategoryScrollableCard from "../../components/MainCategories/CategoryScrollableCard";
-import { listCategorys } from "../../src/graphql/queries";
+import { getAllCategories, listCategorys } from "../../src/graphql/queries";
 import { Category } from "../../types";
 
 import styles from "./styles";
@@ -95,16 +95,15 @@ const HomeScreen = () => {
   const [categories, setCategories] = useState<Category[] | null>([]);
   const fetchCategories = async () => {
     try {
-      const response = await API.graphql(graphqlOperation(listCategorys));
+      const response = await API.graphql(graphqlOperation(getAllCategories));
       setCategories(response.data.listCategorys.items);
-      console.log(categories);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     fetchCategories();
-  });
+  }, [categories]);
 
   if (!categories) {
     return <ActivityIndicator />;

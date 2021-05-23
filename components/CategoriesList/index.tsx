@@ -5,12 +5,12 @@ import CategoryCard from "../CategoryCard";
 
 import styles from "./styles";
 
-const CategoryComponent = (props: Category) => {
+const CategoryComponent = ({ categoryName, product }: Category) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.categoryName}</Text>
+      <Text style={styles.title}>{categoryName}</Text>
       <FlatList
-        data={props.product}
+        data={product}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <CategoryCard product={item} />}
         horizontal

@@ -23,7 +23,7 @@ export type HomeStackParamList = {
 export type Category = {
   id: string;
   categoryName: string;
-  product: Product[];
+  product: [Product];
 };
 
 export type Product = {
